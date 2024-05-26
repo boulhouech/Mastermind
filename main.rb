@@ -2,7 +2,7 @@ class Board
   attr_accessor :game_colors, :rows_of_game, :code_pegs
 
   def initialize
-    @game_colors = ["%red", "blue", "green", "yellow", "white", "black"]
+    @game_colors = ["red", "blue", "green", "yellow", "white", "black"]
     @rows_of_game = Array.new(10) { Array.new(4) }
     @code_pegs = []
   end
@@ -86,13 +86,26 @@ class Game
 
     until attempts.eql?(@code_pegs) || attempts == MAX_ATTEMPTS
       puts "Enter First Color"
-      attempts[0] = gets.chomp.to_i
+      attempts[0] = gets.chomp.downcase
       puts "Enter Second Color"
-      attempts[1] = gets.chomp.to_i
+      attempts[1] = gets.chomp.downcase
       puts "Enter Third Color"
-      attempts[2] = gets.chomp.to_i
+      attempts[2] = gets.chomp.downcase
       puts "Enter Fourth Color"
-      attempts[3] = gets.chomp.to_i
+      attempts[3] = gets.chomp.downcase
+
+
+  end
+
+  def same_place_feedback(color, color_match)
+    color.each_with_index do |row, index|
+      color_match.each_with_index do |row, index|
+        if color[index] == color_match[index]
+          feedback_msg += 1
+          puts "you have #{feedback_msg} colors in the same place"
+        else
+          different_place_feedback
+    end
   end
 
 end
