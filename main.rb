@@ -67,7 +67,7 @@ class Game
   end
 
   def code_maker(player)
-    code = @code_pegs
+    code = []
     getting_colrs = ""
     MAX_LENGTH == 4
 
@@ -76,10 +76,23 @@ class Game
       getting_colrs = STDIN.noecho(&:gets).chomp
       code << getting_colrs
     end
+    @code_pegs = code.dup
   end
 
-  def code_braker
+  def code_braker(player)
+    attempts = Array.new(4)
+    MAX_ATTEMPTS == 10
+    puts "Hey, #{player} You Have 10 Attempts To Brake The Code\n"
 
+    until attempts.eql?(@code_pegs) || attempts == MAX_ATTEMPTS
+      puts "Enter First Color"
+      attempts[0] = gets.chomp.to_i
+      puts "Enter Second Color"
+      attempts[1] = gets.chomp.to_i
+      puts "Enter Third Color"
+      attempts[2] = gets.chomp.to_i
+      puts "Enter Fourth Color"
+      attempts[3] = gets.chomp.to_i
   end
 
 end
