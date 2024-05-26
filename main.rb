@@ -19,8 +19,6 @@ class Game
     @code_maker = code_maker
     @code_braker = code_braker
     @players = []
-
-
   end
   #while free_rows false
 
@@ -32,25 +30,40 @@ class Game
     puts "Type 'C' to play against the computer.\n"
 
     opponent = gets.chomp.upcase
+    cheak_opponent(opponent)
 
-    until @players.include?("C" || "P")
-      if opponent == "C"
-        play_against_computer
-      end
-      if opponent == "P"
-        play_agaisnt_human
-      else
-        "ERROR, CHOSE AGAAIN"
+    def cheak_opponent(player)
+      until opponent == "C" || opponent == "P"
+        case opponent
+        when "C"
+          play_against_computer
+        when "P"
+          play_against_human
+        else
+          puts "ERROR, INVALID CHOICE"
+        end
       end
     end
+
+    def play_against_human
+      puts "Enter Your Name PLayer One"
+      player_one = gets.chomp.downcase
+      @players << player_one
     end
+
+    end
+
+
+
+
+
+
 
 
   end
 
-  def
 
-  end
+
 
 
 
@@ -66,9 +79,9 @@ class Game
   #end
 
 
-
-  end
 end
+end
+
 
 
 game = Game.new
