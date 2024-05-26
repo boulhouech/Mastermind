@@ -97,14 +97,22 @@ class Game
 
   end
 
-  def same_place_feedback(color, color_match)
-    color.each_with_index do |row, index|
-      color_match.each_with_index do |row, index|
-        if color[index] == color_match[index]
+  def give_feedback(guessing_array, code_array)
+    feedback_msg = ""
+    feedback_msg_two = ""
+
+    guessing_array.each_with_index do |color, index|
+      code_array.each_with_index do |color, index|
+        if quessing_array[index] == code_array[index]
           feedback_msg += 1
           puts "you have #{feedback_msg} colors in the same place"
+        if color? {|color| color_match.include?(row)}
+          feedback_msg_two += 1
+          puts "you have #{feedback_msg_two} correct number but not in the correct place"
+
         else
-          different_place_feedback
+          puts "you guess it wrong"
+        end
     end
   end
 
