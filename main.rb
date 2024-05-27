@@ -123,23 +123,21 @@ class Game
 
 
   def give_feedback(guessing_array, code_array)
-    feedback_msg = ""
-    feedback_msg_two = ""
+    feedback_msg = 0
+    feedback_msg_two = 0
 
     guessing_array.each_with_index do |color, index|
-      code_array.each_with_index do |color, index|
-        if quessing_array[index] == code_array[index]
-          feedback_msg += 1
-          puts "you have #{feedback_msg} colors in the same place"
-        if color? {|color| color_match.include?(row)}
-          feedback_msg_two += 1
-          puts "you have #{feedback_msg_two} correct number but not in the correct place"
-
-        else
-          puts "you guess it wrong"
-        end
+      if color == code_array[index]
+        feedback_msg += 1
+      elsif code_array.include?(color)
+        feedback_msg_two += 1
+      end
     end
+
+    puts "You have #{feedback_msg} color(s) in the correct place."
+    puts "You have #{feedback_msg_two} color(s) correct but in the wrong place."
   end
+
 
   def play_against_computer
     role_vs_computer = ''
