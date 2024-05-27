@@ -156,12 +156,12 @@ class Game
     until role_vs_computer == 1 || role_vs_computer == 2
 
 
-    puts "#{player_name} Type `1` if you want to play as code maker\n"
-    puts "#{player_name} Type `2` if you want to play as code breaker\n"
+      puts "#{player_name} Type `1` if you want to play as code maker\n"
+      puts "#{player_name} Type `2` if you want to play as code breaker\n"
 
-    role_vs_computer = gets.chomp.to_i
+      role_vs_computer = gets.chomp.to_i
 
-    if role_vs_computer == 1
+      if role_vs_computer == 1
       code_maker(player_name)
       computer_break_code
     elsif role_vs_computer == 2
@@ -173,13 +173,33 @@ class Game
   end
   end
 
+
   def computer_make_code
     computer_code = @board.game_colors.sample(4)
     @board.code_pegs = computer_code.dup
   end
 
   def computer_break_code
-    # Implementation for the computer to break the code
+    computer_attempt  = @board.game_colors.sample(4)
+    result = @board.code_pegs
+
+
+    until computer_attempt.eql?(result) || computer_attempt >= MAX_ATTEMPTS
+      result.each_with_index do |color, index|
+        if color == result[index]
+          right_position += index
+        else result.include?(color)
+          correct_but_misplaced += computer_attempt.index(color)
+        end
+        end
+      end
+      right_position = []
+      correct_but_misplaced = []
+
+    end
+
+
+
   end
 end
 
