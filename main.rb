@@ -1,3 +1,6 @@
+require 'io/console'
+
+
 class Board
   attr_accessor :game_colors, :rows_of_game, :code_pegs
 
