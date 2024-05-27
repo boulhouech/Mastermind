@@ -62,13 +62,13 @@ class Game
     @players[0] = @code_maker
     @players[1] = @code_braker
 
-  puts "Game Started #{@players[0]} Is The Code Maker\n"
-  code_maker(@players[0])
+    puts "Game Started #{@players[0]} Is The Code Maker\n"
+    code_maker(@players[0])
 
-  puts "Game Started #{@players[1]} Is The Code Braker\n"
-  code_braker(@players[1])
-
+    puts "Game Started #{@players[1]} Is The Code Braker\n"
+    code_braker(@players[1])
   end
+
 
   def code_maker(player)
     code = []
