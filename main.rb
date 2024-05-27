@@ -156,17 +156,25 @@ class Game
 
       if role_vs_computer == 1
         code_maker(player_name)
+        computer_break_code
       if role_vs_computer == 2
+        computer_make_code
         code_breaker(player_name)
+      else
+        puts "Invalid Choice, Try Again"
       end
-
   end
+
 
   def computer_make_code
+    computer_make_code = Board.game_colors.sample(4)
+    Board.code_pegs = computer_make_code.dub
+  end
 
   end
 
-  def compuuter_break_code
+  def computer_break_code
+    
 
   end
 
