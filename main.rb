@@ -51,7 +51,7 @@ class Game
 
 
   def play_against_human
-    puts 'Enter Your Name PLayer One'
+    puts 'Enter Your Name Player One'
     player_one = gets.chomp.downcase
     @players << player_one
 
@@ -59,15 +59,16 @@ class Game
     player_two = gets.chomp.downcase
     @players << player_two
 
-    @players[0] = @code_maker
-    @players[1] = @code_braker
+    @code_maker = @players[0]
+    @code_breaker = @players[1]
 
-    puts "Game Started #{@players[0]} Is The Code Maker\n"
-    code_maker(@players[0])
+    puts "Game Started #{@code_maker.capitalize} Is The Code Maker\n"
+    code_maker(@code_maker)
 
-    puts "Game Started #{@players[1]} Is The Code Braker\n"
-    code_braker(@players[1])
+    puts "Game Started #{@code_breaker.capitalize} Is The Code Breaker\n"
+    code_breaker(@code_breaker)
   end
+
 
 
   def code_maker(player)
