@@ -27,28 +27,28 @@ class Game
   end
 
   def play_round
-    attr_reader :opponent
-
     puts "\nWelcome to the Mastermind game!"
     puts "Type 'P' to play against a person."
     puts "Type 'C' to play against the computer.\n"
 
     opponent = gets.chomp.upcase
-    cheak_opponent(opponent)
+    check_opponent(opponent)
+  end
 
-    def cheak_opponent(op)
-      until op == "C" || opponent == "P"
-        case op
-        when "C"
-          play_against_computer
-        when "P"
-          play_against_human
-        else
-          puts "ERROR, INVALID CHOICE"
-        end
-      end
+  def check_opponent(opponent)
+    until opponent == "C" || opponent == "P"
+      puts "ERROR, INVALID CHOICE"
+      opponent = gets.chomp.upcase
+    end
+
+    case opponent
+    when "C"
+      play_against_computer
+    when "P"
+      play_against_human
     end
   end
+
 
   def play_against_human
     puts 'Enter Your Name PLayer One'
