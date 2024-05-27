@@ -116,6 +116,34 @@ class Game
     end
   end
 
+  def play_against_computer
+    role_vs_computer = ''
+    player_name = ''
+
+    puts "Enter Your  Name\n"
+    player_name = gets.chomp.upcase
+
+    puts "#{player_name} Type `1` if  you want to play as code maker\n"
+    puts "#{player_name}} Type `2` if  you want to play as code braker\n"
+
+    role_vs_computer = get.chomp.upcase
+
+      if role_vs_computer == 1
+        code_maker(player_name)
+      if role_vs_computer == 2
+        code_breaker(player_name)
+      end
+
+  end
+
+  def computer_make_code
+
+  end
+
+  def compuuter_break_code
+    
+  end
+
 end
 
 
