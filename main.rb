@@ -90,23 +90,37 @@ class Game
   end
 
 
-  def code_braker(player)
-    attempts = Array.new(4)
-    MAX_ATTEMPTS == 10
-    puts "Hey, #{player} You Have 10 Attempts To Brake The Code\n"
+  def code_breaker(player)
+    attempts = []
+    attempt_count = 0
 
-    until attempts.eql?(@code_pegs) || attempts == MAX_ATTEMPTS
-      puts "Enter First Color"
-      attempts[0] = gets.chomp.downcase
-      puts "Enter Second Color"
-      attempts[1] = gets.chomp.downcase
-      puts "Enter Third Color"
-      attempts[2] = gets.chomp.downcase
-      puts "Enter Fourth Color"
-      attempts[3] = gets.chomp.downcase
+    puts "Hey, #{player.capitalize}, you have #{MAX_ATTEMPTS} attempts to break the code\n"
 
+    until attempts == @board.code_pegs || attempt_count >= MAX_ATTEMPTS
+      guess = []
+      puts "Enter your guess for the colors (4 colors needed)"
+      4.times do |i|
+        puts "Enter color ##{i+1}:"
+        color = gets.chomp.downcase
+        if @board.game_colors.include?(color)
+          guess << color
+        else
+          puts "Invalid color choice. Please choose again."
+          redo
+        end
+      end
+      attempts = guess.dup
+      attempt_count += 1
+      give_feedback(guess, @board.code_pegs)
+    end
 
+    if attempts == @board.code_pegs
+      puts "Congratulations, #{player.capitalize}! You broke the code!"
+    else
+      puts "Sorry, #{player.capitalize}, you've used all your attempts. The code was #{@board.code_pegs.join(', ')}"
+    end
   end
+
 
   def give_feedback(guessing_array, code_array)
     feedback_msg = ""
