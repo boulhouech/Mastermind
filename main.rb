@@ -73,16 +73,22 @@ class Game
 
   def code_maker(player)
     code = []
-    getting_colrs = ""
-    MAX_LENGTH == 4
 
-    until code.length == MAX_LENGTH
-      puts "#{player} choose from this colots #{@game_colors}"
-      getting_colrs = STDIN.noecho(&:gets).chomp
-      code << getting_colrs
+    4.times do |i|
+      puts "#{player.capitalize}, choose from these colors: #{@board.game_colors.join(', ')}"
+      puts "enter color ##{i+1}"
+      getting_colors = STDIN.noecho(&:gets).chomp
+      if @board.game_colors.include?(getting_colors)
+        code << getting_colors
+      else
+        puts "Invalid color choice. Please choose again."
+        redo
+      end
     end
-    @code_pegs = code.dup
+
+    @board.code_pegs = code.dup
   end
+
 
   def code_braker(player)
     attempts = Array.new(4)
