@@ -153,6 +153,9 @@ class Game
     puts "Enter Your Name\n"
     player_name = gets.chomp.upcase
 
+    until role_vs_computer == 1 || role_vs_computer == 2
+
+
     puts "#{player_name} Type `1` if you want to play as code maker\n"
     puts "#{player_name} Type `2` if you want to play as code breaker\n"
 
@@ -167,6 +170,7 @@ class Game
     else
       puts "Invalid Choice, Try Again"
     end
+  end
   end
 
   def computer_make_code
