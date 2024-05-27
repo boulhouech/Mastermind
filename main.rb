@@ -15,12 +15,16 @@ class Board
 end
 
 class Game
+  attr_reader :players, :code_maker, :code_breaker
+
+  MAX_ATTEMPTS = 10
+
   def initialize
-    @code_maker = code_maker
-    @code_braker = code_braker
+    @code_maker = nil
+    @code_breaker = nil
     @players = []
+    @board = Board.new
   end
-  #while free_rows false
 
   def play_round
     attr_reader :opponent
@@ -141,7 +145,7 @@ class Game
   end
 
   def compuuter_break_code
-    
+
   end
 
 end
