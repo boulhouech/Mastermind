@@ -109,4 +109,10 @@ class Computer
     # Simplest possible guess, purely random for easy mode
     Array.new(4) { rand(1..6) }
   end
+
+  def generate_guess_medium(track_of_guessing, code_to_break)
+    # Slightly more sophisticated guessing logic
+    guess = track_of_guessing.last || Array.new(4) { rand(1..6) }
+    guess.map { |peg| peg == code_to_break.sample ? peg : rand(1..6) }
+  end
 end
