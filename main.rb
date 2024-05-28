@@ -165,7 +165,7 @@ class Game
 
       if role_vs_computer == 1
       code_maker(player_name)
-      computer_break_code
+      Computer.new
     elsif role_vs_computer == 2
       computer_make_code(player_name)
       code_breaker(player_name)
