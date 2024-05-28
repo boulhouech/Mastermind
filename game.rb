@@ -1,5 +1,7 @@
-require_relative 'board'
-require_relative 'computer'
+require './board'
+require './game'
+require './_vs_computer'
+require 'io/console'
 
 class Game
   attr_reader :players, :code_maker, :code_breaker
@@ -129,7 +131,9 @@ class Game
 
       if role_vs_computer == 1
         code_maker(player_name)
-        Computer.new(player_name, 'easy')
+        puts "Okay, #{player_name}, choose the level of the game: Easy, Medium, or Hard"
+        level = gets.chomp.upcase
+        Computer.new(player_name, level)
       elsif role_vs_computer == 2
         computer_make_code
         code_breaker(player_name)

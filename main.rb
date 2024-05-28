@@ -1,6 +1,6 @@
-require_relative 'board'
-require_relative 'game'
-require_relative 'computer'
+require './board'
+require './game'
+require './_vs_computer'
 
 class Main
   def initialize
