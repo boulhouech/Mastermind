@@ -104,4 +104,9 @@ class Computer
   end
 
   private
+
+  def generate_guess(track_of_guessing)
+    # Simplest possible guess, purely random for easy mode
+    Array.new(4) { rand(1..6) }
+  end
 end
