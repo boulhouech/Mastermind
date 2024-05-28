@@ -183,15 +183,26 @@ class Game
     computer_attempt  = @board.game_colors.sample(4)
     result = @board.code_pegs
 
-    correct_but_misplaced = []
+
 
     until computer_attempt.eql?(result) || computer_attempt >= MAX_ATTEMPTS
       if not_identical?(computer_attempt, result)
-        check_right_position(result, computer_attempt) || check_misplaced(result, computer_attempt)
+        next_move()
       end
 
-      def next_move(previous_move)
+      def next_move(old_guess)
+        
+        @previous_guesses = [] if @previous_guesses.nil?
+        @previous_guesses << old_guess
 
+        # Generate a new guess that doesn't include any of the previous elements
+        new_guess = []
+        while new_guess.length < 4
+          color = @board.game_colors.sample
+          new_guess << color unless @previous_guesses.any? { |guess| guess.include?(color) }
+        end
+
+        new_guess
       end
     end
   end
@@ -227,12 +238,3 @@ end
 
 game = Game.new
 game.play_round
-
-
-
-
-while
-  loop do
-
-  end
-end
