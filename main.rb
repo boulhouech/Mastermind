@@ -183,25 +183,56 @@ class Game
     computer_attempt  = @board.game_colors.sample(4)
     result = @board.code_pegs
 
+    correct_but_misplaced = []
 
     until computer_attempt.eql?(result) || computer_attempt >= MAX_ATTEMPTS
-      result.each_with_index do |color, index|
-        if color == result[index]
-          right_position += index
-        else result.include?(color)
-          correct_but_misplaced += computer_attempt.index(color)
-        end
-        end
+      if not_identical?(computer_attempt, result)
+        check_right_position(result, computer_attempt) || check_misplaced(result, computer_attempt)
       end
-      right_position = []
-      correct_but_misplaced = []
 
+      def next_move(previous_move)
+
+      end
     end
-
-
-
   end
+
+  def check_right_position(result_array, computer_attempt_array)
+    right_position = []
+    computer_attempt_array.each_with_index do |color, index|
+      if color == result_array[index]
+        right_position << index
+      end
+    right_position
+  end
+
+  def check_misplaced(result_array, computer_attempt_array)
+    correct_but_misplaced = []
+
+    computer_attempt_array.each_with_index do |color, index|
+
+      result_array.include?(color)
+        correct_but_misplaced << computer_attempt.index(color)
+      end
+    end
+  end
+
+  def not_identical?(computer_attempt_array, result_array)
+    if (computer_attempt_array - result_array).empty? && (result_array - computer_attempt_array).empty?
+  end
+
+
+
+
 end
 
 game = Game.new
 game.play_round
+
+
+
+
+while
+  loop do
+
+  end
+end
