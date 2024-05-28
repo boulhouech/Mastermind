@@ -34,6 +34,7 @@ class Game
     @code_breaker = nil
     @players = []
     @board = Board.new
+    @easy_mode = Easy.new
     @attempts = []
   end
 
@@ -165,7 +166,7 @@ class Game
       code_maker(player_name)
       computer_break_code
     elsif role_vs_computer == 2
-      computer_make_code
+      computer_make_code(player_name)
       code_breaker(player_name)
     else
       puts "Invalid Choice, Try Again"
@@ -179,7 +180,30 @@ class Game
     @board.code_pegs = computer_code.dup
   end
 
-  
+  def computer_break_code(name)
+    game_level = ""
+
+    until game_level.include(%w[easy medium hard])
+
+      puts "Okey, #{name}, Choose Level Of Game, Easy, Medium Or Hard"
+      game_level = gets.chomp.downcase
+      case game_level
+      when "easy"
+        easy_mode
+      when "medium"
+        medium_mode
+      when "hard"
+        hard_mode
+      else
+        raise "Invalid choice, Try Again"
+      end
+    end
+
+
+
+    computer_guessing = @board.game_colors.sample(4)
+
+  end
 
 game = Game.new
 game.play_round
