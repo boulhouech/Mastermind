@@ -115,4 +115,10 @@ class Computer
     guess = track_of_guessing.last || Array.new(4) { rand(1..6) }
     guess.map { |peg| peg == code_to_break.sample ? peg : rand(1..6) }
   end
+
+  def generate_guess_hard(track_of_guessing, code_to_break)
+    # More advanced algorithm, e.g., Knuth's algorithm
+    guess = track_of_guessing.last || Array.new(4) { rand(1..6) }
+    guess.each_with_index.map { |peg, i| peg == code_to_break[i] ? peg : rand(1..6) }
+  end
 end
